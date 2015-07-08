@@ -35,7 +35,9 @@ def main(argv):
             img.save('output/{}.png'.format(symbol))
 
             # img = open('output/{}.png'.format(symbol), 'rb')
-            twitter.update_status_with_media(status='Checkout this cool image! ${}'.format(symbol), media=img)
+
+            pimg = open('output/{}.png'.format(symbol), 'rb')
+            twitter.update_status_with_media(status='Checkout this cool image! ${}'.format(symbol.replace('^', '')), media=pimg)
 
 if __name__ == "__main__":
     main(sys.argv)
